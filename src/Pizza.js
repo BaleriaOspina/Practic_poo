@@ -32,3 +32,41 @@ const pizzaHawaiana = new Pizza("Masa delgada", "Grande", [
 console.log(pizzaHawaiana.preparar());
 console.log(pizzaHawaiana.hornear());
 console.log(pizzaHawaiana.empacar());
+
+//Herencia
+
+class Combos extends Pizza {
+  constructor(combo, cantidad, tamano, masa, ingredientes, bebida, postre) {
+    super(tamano, masa, ingredientes);
+    this.combo = combo;
+    this.cantidad = cantidad;
+    this.bebida = bebida;
+    this.postre = postre;
+  }
+
+  //Métodos
+
+  elegirCombo() {
+    this.preparar();
+    this.hornear();
+    this.empacar();
+
+    console.log(
+      `Pedido: Combo ${this.combo}, ${this.cantidad} Pizza${this.porciones}, ${this.masa}, ${this.ingredientes} + ${this.bebida} + ${this.postre}`
+    );
+    return this;
+  }
+}
+
+const Pedido = new Combos(
+  "Unapersona",
+  1,
+  "Mediana",
+  "Masa tradicional",
+  ["Queso", "peperoni"],
+  "Coca-Cola grande",
+  "Rollitos de canela y chocolate",
+  1
+);
+
+console.log(Pedido.elegirCombo());
